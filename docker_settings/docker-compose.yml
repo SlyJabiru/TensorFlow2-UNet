@@ -3,13 +3,14 @@ version: '2.3'
 
 services:
   tf_unet:
-    image: beamer_tf_medical_image:0.2
+    image: <your_docker_image>:<tag>
     runtime: nvidia
     ports:
-     - "9980:9980"
+     - "port1:port1"
+     - "port2:port2"
     volumes:
-     - ~/TensorFlow2-UNet/:/app/repo/
-    command: jupyter lab --notebook-dir=./repo/ --ip=0.0.0.0 --port=9980  --no-browser --allow-root
+     - <path_to_this_repo>:/app/repo/
+    command: jupyter lab --notebook-dir=./repo/ --ip=0.0.0.0 --port=<port1>  --no-browser --allow-root
     environment:
       - NVIDIA_VISIBLE_DEVICES=0,1,2
     shm_size: '32gb'
