@@ -1,0 +1,22 @@
+version: '2.3'
+
+
+services:
+  tf_unet:
+    image: beamer_tf_medical_image:0.2
+    runtime: nvidia
+    ports:
+     - "9980:9980"
+    volumes:
+     - ~/TensorFlow2-UNet/:/app/repo/
+    command: jupyter lab --notebook-dir=./repo/ --ip=0.0.0.0 --port=9980  --no-browser --allow-root
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=0,1,2
+    shm_size: '32gb'
+    # environment: # or I could do this
+    #   - NVIDIA_VISIBLE_DEVICES=0
+    tty: true
+
+
+# sudo docker-compose -f docker-compose.yml up
+# sudo docker exec -it <container-id> /bin/bash

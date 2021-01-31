@@ -1,0 +1,12 @@
+__pycache__
+*/__pycache__
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints
+
+PennFudanPed
+PennFudanPed.zip
+
+saved_models/*
+tensorboard_logs/*
+tf_records/*
